@@ -16,9 +16,15 @@ RUN npm run build
 
 
 FROM node:12 AS production
-WORKDIR /app
+FROM golang:1.9.2 
+COPY ./server.go /go/src/app
 COPY --from=builder ./app/build .
-COPY --from=go-builder ./app .
-RUN pwd
-EXPOSE 3000
-CMD ["./app/server", "&&", "pwd"]
+WORKDIR /go/src/app
+RUN go install
+ENTRYPOINT ["/go/bin/app"]
+
+# WORKDIR /app
+# # COPY --from=go-builder ./app .
+# RUN pwd
+# EXPOSE 3000
+# CMD ["./app/server", "&&", "pwd"]
