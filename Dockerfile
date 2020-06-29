@@ -18,6 +18,6 @@ WORKDIR /app
 # COPY --from=builder ./app/client/build ./client/build
 COPY --from=builder ./app/build .
 
-EXPOSE 3000
+# EXPOSE 3000
 
-CMD ["serve", "-s", ".", "-p", "3000"]
+CMD ["serve", "-s", ".", "-p", $PORT]
