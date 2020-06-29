@@ -26,4 +26,4 @@ COPY --from=builder ./app/build .
 COPY --from=go-builder ./app/server .
 RUN ls
 # EXPOSE 3000
-CMD ["/app/server"]
+CMD ["ls"]
