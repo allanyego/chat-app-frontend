@@ -21,4 +21,4 @@ COPY --from=builder ./app/build .
 COPY --from=go-builder ./app .
 RUN pwd
 EXPOSE 3000
-CMD ./server
+CMD ["./app/server", "&&", "pwd"]
