@@ -4,6 +4,7 @@ WORKDIR /app
 # RUN go mod download
 COPY ./server.go ./
 RUN go build -o server .
+RUN ls
 
 
 FROM node:12 AS builder
@@ -23,5 +24,6 @@ WORKDIR /app
 # COPY --from=builder ./app/client/build ./client/build
 COPY --from=builder ./app/build .
 COPY --from=go-builder ./app/server .
+RUN ls
 # EXPOSE 3000
 CMD ["./server"]
