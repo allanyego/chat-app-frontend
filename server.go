@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -10,7 +9,6 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	defaultPort := "3000"
-	fmt.Println("Server starting...")
 
 	http.Handle("/", http.FileServer(http.Dir(".")))
 	if !(port == "") {
