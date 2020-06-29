@@ -1,9 +1,9 @@
-FROM golang:alpine as go-builder
-WORKDIR /app
-# COPY go.mod go.sum ./
-# RUN go mod download
-COPY ./server.go ./
-RUN go build -o server .
+# FROM golang:alpine as go-builder
+# WORKDIR /app
+# # COPY go.mod go.sum ./
+# # RUN go mod download
+# COPY ./server.go ./
+# RUN go build -o server .
 
 
 FROM node:12 AS builder
