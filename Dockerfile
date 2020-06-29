@@ -9,7 +9,7 @@ COPY . .
 # RUN cd client && rm yarn.lock && npm install && npm run build && cd ..
 RUN rm yarn.lock
 RUN npm install
-RUN npm build
+RUN npm run build
 
 
 FROM node:12 AS production
