@@ -19,6 +19,6 @@ FROM node:12 AS production
 WORKDIR /app
 COPY --from=builder ./app/build .
 COPY --from=go-builder ./app .
-RUN ls
-# EXPOSE 3000
-CMD ["./server"]
+RUN pwd
+EXPOSE 3000
+CMD ./server
