@@ -16,12 +16,14 @@ RUN npm run build
 
 
 FROM node:12 AS production
-FROM golang:1.9.2 
-COPY ./server.go /go/src/app
-COPY --from=builder ./app/build .
+FROM golang:1.14
 WORKDIR /go/src/app
-RUN go install
-ENTRYPOINT ["/go/bin/app"]
+COPY ./server.go .
+COPY --from=builder ./app/build .
+RUN go get -d -v ./...
+RUN go install -v ./...
+RUN ls
+CMD ["app"]
 
 # WORKDIR /app
 # # COPY --from=go-builder ./app .
