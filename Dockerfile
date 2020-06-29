@@ -20,4 +20,4 @@ COPY --from=builder ./app/build .
 
 # EXPOSE 3000
 
-CMD ["serve", "-s", ".", "-p", $PORT]
+CMD serve -s . -p $PORT
