@@ -1,5 +1,7 @@
 package main
 
+// Module to serve the production build folder
+
 import (
 	"log"
 	"net/http"
@@ -7,6 +9,7 @@ import (
 )
 
 func main() {
+	// Get PORT set by Heroku
 	port := os.Getenv("PORT")
 	defaultPort := "3000"
 
