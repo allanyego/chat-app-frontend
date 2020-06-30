@@ -118,12 +118,10 @@ const ChatBox = props => {
 
     const reloadMessages = () => {
         if (props.scope === 'Global Chat') {
-            getGlobalMessages().then(res => {
-                setMessages(res);
-            });
+            getGlobalMessages().then(res => !!res?.length && setMessages(res));
         } else if (props.scope !== null && props.conversationId !== null) {
             getConversationMessages(props.user._id).then(res =>
-                setMessages(res)
+                !!res?.length && setMessages(res)
             );
         } else {
             setMessages([]);
@@ -244,7 +242,7 @@ function Message({ message }) {
                                 className={classes.timeText}
                                 color="textSecondary"
                                 >
-                                {moment(message.date).format("LT")}
+                                {moment(Number(message.date)).format("LT")}
                             </Typography>
                         </React.Fragment>
                     }

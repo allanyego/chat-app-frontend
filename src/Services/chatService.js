@@ -126,7 +126,7 @@ export function useSendConversationMessage() {
             .then(handleResponse)
             .catch(err => {
                 console.log(err);
-                enqueueSnackbar('Could send message', {
+                enqueueSnackbar('Couldn\'t send message', {
                     variant: 'error',
                 });
             });
